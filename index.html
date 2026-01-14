@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Car Tinting & Accessories Nakuru</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-main: #050608;
+      --bg-section: #111217;
+      --bg-alt: #171821;
+      --accent: #e50914; /* change to electric blue if you like */
+      --text-main: #f5f5f5;
+      --text-muted: #b5b5b5;
+      --border-soft: #242634;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background: rgba(5, 6, 8, 0.96);
+      border-bottom: 1px solid var(--border-soft);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 0 rgba(229, 9, 20, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 16px rgba(229, 9, 20, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-main);
+      border-color: var(--border-soft);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-sm {
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    /* Layout */
+
+    main {
+      margin-top: 64px;
+    }
+
+    section {
+      padding: 3.5rem 1.25rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Hero */
+
+    .hero {
+      background: radial-gradient(circle at top, #191a27 0, #050608 55%);
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #31c48d;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-text {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 1.4rem;
+      font-size: 0.98rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .stat {
+      min-width: 110px;
+    }
+
+    .stat-number {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-car {
+      background: linear-gradient(135deg, #111217, #191a27);
+      border-radius: 1.2rem;
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+    }
+
+    .hero-car-top {
+      position: relative;
+      padding: 1.25rem;
+      overflow: hidden;
+    }
+
+    .hero-car-top::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(229, 9, 20, 0.2), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-car-caption {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.2rem;
+      font-size: 0.8rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .hero-car img {
+      border-radius: 0.9rem;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .quick-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.9rem 1.25rem;
+      border-top: 1px solid var(--border-soft);
+      background: #0b0c12;
+      font-size: 0.8rem;
+    }
+
+    .quick-service-pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #171821;
+      border: 1px solid #26283a;
+      color: var(--text-muted);
+    }
+
+    /* Services */
+
+    .services {
+      background: var(--bg-section);
+    }
+
+    .services-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--bg-alt);
+      border-radius: 1rem;
+      border: 1px solid var(--border-soft);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-chip {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .service-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .service-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .service-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .service-list li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    .service-footer {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Pricing */
+
+    .pricing {
+      background: var(--bg-main);
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      overflow: hidden;
+      border-radius: 0.9rem;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-alt);
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+      padding: 0.7rem 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #202234;
+    }
+
+    .pricing-table th {
+      background: #171821;
+      font-weight: 500;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .pricing-note {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Gallery */
+
+    .gallery {
+      background: var(--bg-section);
+    }
+
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .filter-pill {
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      color: var(--text-muted);
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.15s ease-out;
+    }
+
+    .filter-pill.active,
+    .filter-pill:hover {
+      border-color: var(--accent);
+      color: #fff;
+      background: #191a27;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.8rem;
+      background: #101119;
+      border: 1px solid var(--border-soft);
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      transition: transform 0.3s ease-out;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 0.6rem;
+      bottom: 0.55rem;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Reviews */
+
+    .reviews {
+      background: var(--bg-main);
+    }
+
+    .reviews-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .review-card {
+      background: var(--bg-alt);
+      border-radius: 0.9rem;
+      border: 1px solid var(--border-soft);
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .review-name {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #fff;
+    }
+
+    .stars {
+      color: #fbbf24;
+      font-size: 0.75rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* About */
+
+    .about {
+      background: var(--bg-section);
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .about-highlight {
+      margin-top: 1rem;
+      padding: 0.9rem;
+      border-radius: 0.7rem;
+      background: #181a26;
+      border: 1px dashed var(--border-soft);
+      font-size: 0.82rem;
+    }
+
+    /* Contact */
+
+    .contact {
+      background: var(--bg-main);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .contact-details {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-details p {
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-map {
+      margin-top: 1rem;
+      padding: 0.9rem;
+      border-radius: 0.8rem;
+      border: 1px dashed var(--border-soft);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .contact-form {
+      background: var(--bg-section);
+      border-radius: 0.9rem;
+      border: 1px solid var(--border-soft);
+      padding: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    input,
+    textarea {
+      background: #101119;
+      border-radius: 0.5rem;
+      border: 1px solid #232437;
+      padding: 0.55rem 0.65rem;
+      color: #fff;
+      font: inherit;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      background: #050608;
+      padding: 1rem 1.25rem 2.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Floating WhatsApp */
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      z-index: 999;
+    }
+
+    .floating-whatsapp .btn {
+      border-radius: 999px;
+      background: #25d366;
+      color: #050608;
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      animation: pulse 1.9s infinite;
+    }
+
+    .floating-whatsapp .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.75);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Scroll fade-in */
+
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        align-items: center;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-cta {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating WhatsApp -->
+  <div class="floating-whatsapp">
+    <a class="btn btn-sm" href="https://wa.me/254768344646" target="_blank" rel="noopener">
+      WhatsApp Us
+    </a>
+  </div>
+
+  <header>
+    <div class="nav">
+      <div class="logo">NAKURU <span>TINT & AUTO</span></div>
+      <nav class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-outline btn-sm" href="tel:+254768344646">Call</a>
+        <a class="btn btn-primary btn-sm" href="https://wa.me/254768344646" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero fade-section">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-badge">
+            <span></span>
+            Premium car tinting & accessories – Nakuru
+          </div>
+          <h1 class="hero-title">Premium Car Tinting & Accessories in Nakuru</h1>
+          <p class="hero-text">
+            Car tinting, buffing, seat upgrades, lights and music installation – all done professionally on Tom Mboya Street, opposite Polo Center.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="https://wa.me/254768344646" target="_blank" rel="noopener">
+              WhatsApp Now
+            </a>
+            <a class="btn btn-outline" href="tel:+254768344646">
+              Call Now
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-number">5+ yrs</div>
+              <div class="stat-label">Experience</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">1000+</div>
+              <div class="stat-label">Cars serviced</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">4.8★</div>
+              <div class="stat-label">Customer rating</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-car">
+          <div class="hero-car-top">
+            <!-- Replace this image with one of your tinting car images -->
+            <img src="https://www.imghippo.com/i/gHda2526UE.jpg" alt="Luxury car tinted in Nakuru" />
+            <div class="hero-car-caption">Clean tint & lighting finish – Nakuru</div>
+          </div>
+          <div class="quick-services">
+            <div class="quick-service-pill">Tinting</div>
+            <div class="quick-service-pill">Car Buffing</div>
+            <div class="quick-service-pill">Seat Upgrading</div>
+            <div class="quick-service-pill">LED & Projectors</div>
+            <div class="quick-service-pill">Music Systems</div>
+            <div class="quick-service-pill">Accessories</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services fade-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Main Services</h2>
+          <p class="section-subtitle">
+            One stop for tinting, buffing, seat upgrades, lights and music systems in Nakuru.
+          </p>
+        </div>
+        <div class="services-grid">
+          <!-- Tinting -->
+          <article class="service-card">
+            <div class="service-chip">Tinting</div>
+            <h3 class="service-title">Car Window Tinting – Nakuru</h3>
+            <p class="service-text">
+              High-quality window films installed by experts for heat control, privacy and a clean premium look.
+            </p>
+            <ul class="service-list">
+              <li>Reduces heat inside the car</li>
+              <li>Adds privacy and security</li>
+              <li>Protects interior from UV damage</li>
+              <li>Clean, bubble-free installation with warranty</li>
+            </ul>
+            <div class="service-footer">
+              <span>WhatsApp for tint packages</span>
+              <a class="btn btn-outline btn-sm" href="https://wa.me/254768344646?text=I%20want%20car%20tinting%20in%20Nakuru" target="_blank" rel="noopener">Book Tinting</a>
+            </div>
+          </article>
+
+          <!-- Buffing -->
+          <article class="service-card">
+            <div class="service-chip">Buffing & Polishing</div>
+            <h3 class="service-title">Car Buffing & Polishing</h3>
+            <p class="service-text">
+              Remove swirl marks, oxidation and dull paint with professional machine polishing for deep gloss and shine.
+            </p>
+            <ul class="service-list">
+              <li>Removes light scratches and swirl marks</li>
+              <li>Restores gloss and reflection</li>
+              <li>Protects paint with wax or sealant</li>
+              <li>Perfect before selling or after years of dust</li>
+            </ul>
+            <div class="service-footer">
+              <span>Share car photos for a quote</span>
+              <a class="btn btn-outline btn-sm" href="https://wa.me/254768344646?text=I%20want%20car%20buffing%20and%20polishing" target="_blank" rel="noopener">Book Buffing</a>
+            </div>
+          </article>
+
+          <!-- Seats -->
+          <article class="service-card">
+            <div class="service-chip">Interior</div>
+            <h3 class="service-title">Seat Upgrading & Interior</h3>
+            <p class="service-text">
+              Give your interior a new life with custom-fit seat covers and upgrades for comfort, durability and a luxury look.
+            </p>
+            <ul class="service-list">
+              <li>Custom-fit seat covers</li>
+              <li>Easy-clean, durable materials</li>
+              <li>Color and stitching options</li>
+              <li>Protects original seats & resale value</li>
+            </ul>
+            <div class="service-footer">
+              <span>Send interior photos on WhatsApp</span>
+              <a class="btn btn-outline btn-sm" href="https://wa.me/254768344646?text=I%20want%20seat%20upgrading" target="_blank" rel="noopener">Upgrade Seats</a>
+            </div>
+          </article>
+
+          <!-- Android radio -->
+          <article class="service-card">
+            <div class="service-chip">Android Radio</div>
+            <h3 class="service-title">Android Radio Installation</h3>
+            <p class="service-text">
+              Upgrade to a modern Android radio with Bluetooth, maps and reverse camera options, installed cleanly.
+            </p>
+            <ul class="service-list">
+              <li>Touchscreen with apps and navigation</li>
+              <li>Bluetooth calls and music streaming</li>
+              <li>Reverse camera support</li>
+              <li>Neat, factory-look installation</li>
+            </ul>
+            <div class="service-footer">
+              <span>Ask for available models</span>
+              <a class="btn btn-outline btn-sm" href="https://wa.me/254768344646?text=I%20want%20Android%20radio%20installation" target="_blank" rel="noopener">Book Radio</a>
+            </div>
+          </article>
+
+          <!-- Music -->
+          <article class="service-card">
+            <div class="service-chip">Music Systems</div>
+            <h3 class="service-title">Music System & Sound Upgrade</h3>
+            <p class="service-text">
+              Clear sound and solid bass with professionally installed speakers, subwoofers and amplifiers tuned for your car.
+            </p>
+            <ul class="service-list">
+              <li>Quality speakers and subwoofers</li>
+              <li>Proper wiring and tuning</li>
+              <li>Balanced sound front and back</li>
+              <li>Options for all budgets</li>
+            </ul>
+            <div class="service-footer">
+              <span>Tell us your budget and goals</span>
+              <a class="btn btn-outline btn-sm" href="https://wa.me/254768344646?text=I%20want%20music%20system%20upgrade" target="_blank" rel="noopener">Upgrade Sound</a>
+            </div>
+          </article>
+
+          <!-- Lights -->
+          <article class="service-card">
+            <div class="service-chip">Lights & Projectors</div>
+            <h3 class="service-title">LED & Projector Lights Upgrading</h3>
+            <p class="service-text">
+              Brighter headlights and a modern look with LED bulbs and projector setups installed safely and neatly.
+            </p>
+            <ul class="service-list">
+              <li>Brighter, whiter light than stock</li>
+              <li>Better night visibility and safety</li>
+              <li>Stylish, modern appearance</li>
+              <li>Professional wiring & alignment</li>
+            </ul>
+            <div class="service-footer">
+              <span>Send headlight photos on WhatsApp</span>
+              <a class="btn btn-outline btn-sm" href="https://wa.me/254768344646?text=I%20want%20LED%20or%20projector%20lights" target="_blank" rel="noopener">Upgrade Lights</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pricing fade-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Tinting Packages & Estimates</h2>
+          <p class="section-subtitle">
+            Exact price depends on your car model and film type. Send your car photos on WhatsApp for a quick quote.
+          </p>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Package</th>
+                <th>Small car</th>
+                <th>Sedan</th>
+                <th>SUV</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Standard tint</td>
+                <td>from KES —</td>
+                <td>from KES —</td>
+                <td>from KES —</td>
+              </tr>
+              <tr>
+                <td>Premium heat rejection tint</td>
+                <td>from KES —</td>
+                <td>from KES —</td>
+                <td>from KES —</td>
+              </tr>
+              <tr>
+                <td>Windscreen sunstrip (add-on)</td>
+                <td colspan="3">from KES —</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="pricing-note">
+          All installations include professional fitting and cleaning. Warranty is available on selected films. For an exact quote, click the button below and send your car photos.
+        </p>
+        <div style="margin-top:1rem;">
+          <a class="btn btn-primary" href="https://wa.me/254768344646?text=I%20need%20a%20tinting%20quote" target="_blank" rel="noopener">
+            WhatsApp for Exact Quote
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+<section id="gallery" class="gallery fade-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Our Recent Work</h2>
+      <p class="section-subtitle">
+        Real cars we have upgraded in Nakuru – tinting, buffing, interior, lights and music systems.
+      </p>
+    </div>
+
+    <div class="gallery-filters">
+      <button class="filter-pill active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="tinting">Tinting</button>
+      <button class="filter-pill" data-filter="buffing">Buffing</button>
+      <button class="filter-pill" data-filter="seats">Seats</button>
+      <button class="filter-pill" data-filter="lights">Lights</button>
+      <button class="filter-pill" data-filter="music">Music</button>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Car Buffing Images -->
+      <div class="gallery-item" data-category="buffing">
+        <img src="https://www.imghippo.com/i/rnp7867QPk.jpg" alt="Car buffing and polishing in Nakuru" loading="lazy" />
+        <div class="gallery-label">Buffing – deep gloss</div>
+      </div>
+      <div class="gallery-item" data-category="buffing">
+        <img src="https://www.imghippo.com/i/NTY4740jCs.jpg" alt="Buffing before and after in Nakuru" loading="lazy" />
+        <div class="gallery-label">Buffing – before & after</div>
+      </div>
+      <div class="gallery-item" data-category="buffing">
+        <img src="https://www.imghippo.com/i/AqdN5773ehY.jpg" alt="Car polishing Nakuru" loading="lazy" />
+        <div class="gallery-label">Professional polishing</div>
+      </div>
+      <div class="gallery-item" data-category="buffing">
+        <img src="https://www.imghippo.com/i/Jb1533eg.jpg" alt="Buffing service Nakuru" loading="lazy" />
+        <div class="gallery-label">Paint restoration</div>
+      </div>
+      <div class="gallery-item" data-category="buffing">
+        <img src="https://www.imghippo.com/i/dazD9762qU.jpg" alt="Machine buffing Nakuru" loading="lazy" />
+        <div class="gallery-label">Machine buffing</div>
+      </div>
+
+      <!-- Seat Upgrading Images -->
+      <div class="gallery-item" data-category="seats">
+        <img src="https://www.imghippo.com/i/jAW1859fo.jpg" alt="Seat upgrading with new covers Nakuru" loading="lazy" />
+        <div class="gallery-label">Seat upgrade – leather</div>
+      </div>
+      <div class="gallery-item" data-category="seats">
+        <img src="https://www.imghippo.com/i/vugm9950glQ.jpg" alt="Interior seat refresh Nakuru" loading="lazy" />
+        <div class="gallery-label">Interior refresh</div>
+      </div>
+      <div class="gallery-item" data-category="seats">
+        <img src="https://www.imghippo.com/i/jVF5178ezw.jpg" alt="Custom seat covers Nakuru" loading="lazy" />
+        <div class="gallery-label">Custom seat covers</div>
+      </div>
+      <div class="gallery-item" data-category="seats">
+        <img src="https://www.imghippo.com/i/HHNL5519hY.jpg" alt="Seat reupholstery Nakuru" loading="lazy" />
+        <div class="gallery-label">Seat reupholstery</div>
+      </div>
+      <div class="gallery-item" data-category="seats">
+        <img src="https://www.imghippo.com/i/Bjv9340Ens.jpg" alt="Interior upgrade Nakuru" loading="lazy" />
+        <div class="gallery-label">Premium interior</div>
+      </div>
+
+      <!-- Car Tinting Images -->
+      <div class="gallery-item" data-category="tinting">
+        <img src="https://www.imghippo.com/i/gHda2526UE.jpg" alt="Car tinting Nakuru luxury car" loading="lazy" />
+        <div class="gallery-label">Luxury car tint</div>
+      </div>
+      <div class="gallery-item" data-category="tinting">
+        <img src="https://www.imghippo.com/i/msg9852s.jpg" alt="Car tinting side view Nakuru" loading="lazy" />
+        <div class="gallery-label">Full side tint</div>
+      </div>
+      <div class="gallery-item" data-category="tinting">
+        <img src="https://www.imghippo.com/i/JpnG1403hwI.jpg" alt="Tinted SUV Nakuru" loading="lazy" />
+        <div class="gallery-label">Tinted SUV</div>
+      </div>
+      <div class="gallery-item" data-category="tinting">
+        <img src="https://www.imghippo.com/i/Y1033C.jpg" alt="Window tinting Nakuru" loading="lazy" />
+        <div class="gallery-label">Clean window tint</div>
+      </div>
+      <div class="gallery-item" data-category="tinting">
+        <img src="https://www.imghippo.com/i/EY8355vI.jpg" alt="Professional tinting Nakuru" loading="lazy" />
+        <div class="gallery-label">Professional tint job</div>
+      </div>
+
+      <!-- Lights and Projectors Images -->
+      <div class="gallery-item" data-category="lights">
+        <img src="https://www.imghippo.com/i/YIo3944U.jpg" alt="LED headlights Nakuru" loading="lazy" />
+        <div class="gallery-label">LED headlights</div>
+      </div>
+      <div class="gallery-item" data-category="lights">
+        <img src="https://www.imghippo.com/i/yKt7723xtA.jpg" alt="Projector lights upgrade Nakuru" loading="lazy" />
+        <div class="gallery-label">Projector lights</div>
+      </div>
+      <div class="gallery-item" data-category="lights">
+        <img src="https://www.imghippo.com/i/TvJ8829Jkg.jpg" alt="Car lights installation Nakuru" loading="lazy" />
+        <div class="gallery-label">Light installation</div>
+      </div>
+      <div class="gallery-item" data-category="lights">
+        <img src="https://www.imghippo.com/i/HexH4278FCg.jpg" alt="LED bulbs Nakuru" loading="lazy" />
+        <div class="gallery-label">LED bulbs upgrade</div>
+      </div>
+      <div class="gallery-item" data-category="lights">
+        <img src="https://www.imghippo.com/i/lR9742uw.jpg" alt="Headlight restoration Nakuru" loading="lazy" />
+        <div class="gallery-label">Headlight restoration</div>
+      </div>
+
+      <!-- Music Installation Images -->
+      <div class="gallery-item" data-category="music">
+        <img src="https://www.imghippo.com/i/pZp2594teg.jpg" alt="Music system installation Nakuru" loading="lazy" />
+        <div class="gallery-label">Music system install</div>
+      </div>
+      <div class="gallery-item" data-category="music">
+        <img src="https://www.imghippo.com/i/caig7627FIc.jpg" alt="Car speakers installation Nakuru" loading="lazy" />
+        <div class="gallery-label">Speaker installation</div>
+      </div>
+      <div class="gallery-item" data-category="music">
+        <img src="https://www.imghippo.com/i/Ekt4103If.jpg" alt="Amplifier setup Nakuru" loading="lazy" />
+        <div class="gallery-label">Amplifier setup</div>
+      </div>
+      <div class="gallery-item" data-category="music">
+        <img src="https://www.imghippo.com/i/KrCm1131EM.jpg" alt="Sound system wiring Nakuru" loading="lazy" />
+        <div class="gallery-label">Professional wiring</div>
+      </div>
+      <div class="gallery-item" data-category="music">
+        <img src="https://www.imghippo.com/i/cCZO9470cmw.jpg" alt="Subwoofer and amp setup Nakuru" loading="lazy" />
+        <div class="gallery-label">Subwoofer & amp</div>
+      </div>
+    </div>
+  </div>
+</section>
+    
+    <!-- REVIEWS -->
+    <section class="reviews fade-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">What Our Customers Say</h2>
+          <p class="section-subtitle">
+            A few words from Nakuru drivers who trusted us with their cars.
+          </p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            “Very clean tint job and they finished on time. The car looks brand new again.”
+            <div class="review-name">— Customer in Nakuru</div>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            “Buffing removed all my swirl marks and the paint now has a deep shine.”
+            <div class="review-name">— Customer in Nakuru</div>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            “Android radio, reverse camera and speakers installed neatly. Sound is clear and powerful.”
+            <div class="review-name">— Customer in Nakuru</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about fade-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About Our Garage</h2>
+          <p class="section-subtitle">
+            A Nakuru-based team focused on premium finishes and long-lasting results.
+          </p>
+        </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              We specialise in window tinting, car buffing, seat upgrades, lighting and music installations for Nakuru drivers who want a clean, premium finish.
+            </p>
+            <p style="margin-top:0.6rem;">
+              Every car is treated carefully, from neat wiring to smooth, bubble-free tint and detailed finishing. We aim to make your car look and feel better every time it leaves the bay.
+            </p>
+            <p style="margin-top:0.6rem;">
+              With years of hands-on experience and many cars completed, you get honest advice, quality materials and professional installation.
+            </p>
+            <div class="about-highlight">
+              Workshop location: Nakuru, Tom Mboya Street, opposite Polo Center.  
+              Phone & WhatsApp: 0768 344 646
+            </div>
+          </div>
+          <div class="about-text">
+            <p>
+              Recommended services for a full transformation:
+            </p>
+            <ul class="service-list" style="margin-top:0.6rem;">
+              <li>Full car tinting for heat and privacy</li>
+              <li>Buffing & polishing to restore gloss</li>
+              <li>Seat upgrading for a fresh interior</li>
+              <li>LED/projector headlights for safer nights</li>
+              <li>Music system upgrade for better sound</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact fade-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Book Your Car Service</h2>
+          <p class="section-subtitle">
+            Send a WhatsApp message or call to book tinting, buffing, seat upgrades, lights or music installation.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-details">
+            <p><strong>Phone & WhatsApp:</strong> 0768 344 646</p>
+            <p><strong>Location:</strong> Nakuru, Tom Mboya Street, opposite Polo Center</p>
+            <p><strong>Opening:</strong> Monday – Saturday, business hours</p>
+            <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+              <a class="btn btn-primary btn-sm" href="https://wa.me/254768344646" target="_blank" rel="noopener">WhatsApp Now</a>
+              <a class="btn btn-outline btn-sm" href="tel:+254768344646">Call Now</a>
+            </div>
+            <div class="contact-map">
+              Google Map here – embed your location pin for “Tom Mboya Street, opposite Polo Center, Nakuru” from Google Maps.
+            </div>
+          </div>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submission would be handled by your backend or form service.');">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" placeholder="07..." required />
+            </div>
+            <div class="form-group">
+              <label for="car">Car type / model</label>
+              <input id="car" type="text" placeholder="e.g. Toyota Axio" />
+            </div>
+            <div class="form-group">
+              <label for="service">Service needed</label>
+              <textarea id="service" placeholder="Tinting, buffing, seats, lights, music..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="date">Preferred date & time</label>
+              <input id="date" type="text" placeholder="e.g. Saturday morning" />
+            </div>
+            <button class="btn btn-primary btn-sm" type="submit">Send Booking Request</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Nakuru Tint & Auto. All rights reserved.</div>
+      <div>Phone & WhatsApp: 0768 344 646 · Nakuru, Tom Mboya Street, opposite Polo Center</div>
+    </div>
+  </footer>
+
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Intersection Observer for fade-in sections
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll('.fade-section').forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Gallery filter
+    const filterButtons = document.querySelectorAll('.filter-pill');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        galleryItems.forEach((item) => {
+          const category = item.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+  </html>
