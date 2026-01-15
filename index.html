@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Car Tinting & Accessories Nakuru</title>
+  <title>Car Tinting, Buffing & Accessories in Nakuru | Nakuru Tint & Auto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Professional car tinting, buffing, seat upgrades, lights and music installation in Nakuru. Located on Tom Mboya Street, opposite Polo Center.">
   <meta name="keywords" content="car tinting Nakuru, car buffing Nakuru, seat covers Nakuru, Android radio installation, car music systems Nakuru, LED lights Nakuru">
@@ -405,9 +405,10 @@
       border-top: 1px solid #2a2b3a;
     }
 
-    /* Pricing */
+    /* Pricing - Added extra padding */
     .pricing {
       background: var(--bg-main);
+      padding-bottom: 4rem;
     }
 
     .pricing-table {
@@ -445,6 +446,7 @@
     .gallery-section {
       background: var(--bg-section);
       padding: 3.5rem 1.25rem;
+      min-height: 300px;
     }
 
     .gallery-category {
@@ -473,6 +475,20 @@
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1rem;
       margin-top: 1.5rem;
+      min-height: 220px;
+      position: relative;
+    }
+
+    /* Loading text for empty galleries */
+    .simple-gallery:empty::before {
+      content: "Loading gallery…";
+      color: #777;
+      font-size: 0.85rem;
+      display: block;
+      padding: 1rem 0;
+      text-align: center;
+      width: 100%;
+      grid-column: 1 / -1;
     }
 
     .gallery-item {
@@ -1114,6 +1130,8 @@
             WhatsApp for Exact Quote
           </a>
         </div>
+        <!-- Added spacing to prevent visual cutoff -->
+        <div style="height:2rem"></div>
       </div>
     </section>
 
@@ -1443,12 +1461,12 @@
       ]
     };
 
-    // Fallback placeholder images in case catbox URLs fail
+    // FIXED: Corrected fallback image URLs (fixed typo from w-400 to w=400)
     const fallbackImages = {
       'seat-covers-gallery': [
         'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400&h=300&fit=crop',
         'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w-400&h=300&fit=crop'
+        'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400&h=300&fit=crop' // FIXED: w=400
       ],
       'car-buffing-gallery': [
         'https://images.unsplash.com/photo-1565689221354-d85c57f8be7a?w=400&h=300&fit=crop',
@@ -1456,7 +1474,7 @@
       ],
       'car-tinting-gallery': [
         'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400&h=300&fit=crop'
+        'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400&h=300&fit=crop' // FIXED: w=400
       ],
       'music-installation-gallery': [
         'https://images.unsplash.com/photo-1565689221354-d85c57f8be7a?w=400&h=300&fit=crop'
@@ -1531,7 +1549,7 @@
       return galleryItem;
     }
 
-    // Initialize galleries
+    // Initialize galleries - FIXED: Single initialization
     function initializeGalleries() {
       for (const galleryId in galleryImages) {
         const galleryElement = document.getElementById(galleryId);
@@ -1545,15 +1563,10 @@
       }
     }
 
-    // Initialize when DOM is loaded
-    document.addEventListener('DOMContentLoaded', initializeGalleries);
-    
-    // Also initialize if DOM is already loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initializeGalleries);
-    } else {
+    // FIXED: Initialize galleries once when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
       initializeGalleries();
-    }
+    });
   </script>
 </body>
-</html>
+  </html>
