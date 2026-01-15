@@ -10,12 +10,13 @@
     :root {
       --bg-main: #050608;
       --bg-section: #111217;
-      --bg-alt: #171821;
+      --bg-alt: #1a1b26;
       --accent: #e50914;
       --text-main: #f5f5f5;
       --text-muted: #b5b5b5;
       --border-soft: #242634;
       --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --service-card-bg: #1a1b26;
     }
 
     * {
@@ -316,54 +317,91 @@
     }
 
     .service-card {
-      background: var(--bg-alt);
+      background: #1a1b26; /* Classic dark blue-grey background */
       border-radius: 1rem;
-      border: 1px solid var(--border-soft);
-      padding: 1.25rem;
+      border: 1px solid #2a2b3a; /* Slightly lighter border */
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
       position: relative;
       overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-color: var(--accent);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #ff6b6b);
     }
 
     .service-chip {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--text-muted);
+      color: #8b8ca8;
+      background: #242538;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+      width: fit-content;
     }
 
     .service-title {
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-weight: 600;
+      color: #fff;
+      margin-top: 0.5rem;
     }
 
     .service-text {
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: #a1a1b5;
+      line-height: 1.5;
     }
 
     .service-list {
       list-style: none;
       padding-left: 0;
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: #a1a1b5;
+      margin-top: 0.5rem;
+    }
+
+    .service-list li {
+      margin-bottom: 0.3rem;
+      position: relative;
+      padding-left: 1rem;
     }
 
     .service-list li::before {
-      content: "• ";
+      content: "✓";
+      position: absolute;
+      left: 0;
       color: var(--accent);
+      font-weight: bold;
     }
 
     .service-footer {
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 0.75rem;
       font-size: 0.78rem;
-      color: var(--text-muted);
+      color: #8b8ca8;
+      padding-top: 0.8rem;
+      border-top: 1px solid #2a2b3a;
     }
 
     /* Pricing */
@@ -557,10 +595,10 @@
     }
 
     .contact-form {
-      background: var(--bg-section);
+      background: var(--service-card-bg);
       border-radius: 0.9rem;
-      border: 1px solid var(--border-soft);
-      padding: 1rem;
+      border: 1px solid #2a2b3a;
+      padding: 1.5rem;
       font-size: 0.85rem;
     }
 
@@ -568,33 +606,41 @@
       display: flex;
       flex-direction: column;
       gap: 0.25rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     label {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: #a1a1b5;
     }
 
     input,
-    textarea {
+    textarea,
+    select {
       background: #101119;
       border-radius: 0.5rem;
-      border: 1px solid #232437;
+      border: 1px solid #2a2b3a;
       padding: 0.55rem 0.65rem;
       color: #fff;
       font: inherit;
+      transition: border-color 0.2s ease;
     }
 
     input:focus,
-    textarea:focus {
+    textarea:focus,
+    select:focus {
       outline: none;
       border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.1);
     }
 
     textarea {
       min-height: 80px;
       resize: vertical;
+    }
+
+    select {
+      cursor: pointer;
     }
 
     /* Footer */
@@ -670,6 +716,7 @@
       font-size: 1.5rem;
       cursor: pointer;
       padding: 0.5rem;
+      z-index: 1001;
     }
 
     .mobile-menu-btn span {
@@ -708,15 +755,17 @@
     @media (max-width: 768px) {
       .nav-links {
         display: none;
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 0;
         left: 0;
         right: 0;
-        background: var(--bg-main);
+        bottom: 0;
+        background: rgba(5, 6, 8, 0.98);
         flex-direction: column;
-        padding: 1rem;
+        padding: 5rem 2rem 2rem;
         border-bottom: 1px solid var(--border-soft);
         z-index: 1000;
+        backdrop-filter: blur(10px);
       }
 
       .nav-links.active {
@@ -724,7 +773,9 @@
       }
 
       .nav-links a {
-        padding: 0.75rem 0;
+        padding: 1rem 0;
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
       }
 
       .mobile-menu-btn {
@@ -758,6 +809,10 @@
       
       .hero-stats {
         justify-content: center;
+      }
+      
+      section {
+        padding: 2rem 1rem;
       }
     }
   </style>
@@ -831,7 +886,7 @@
         </div>
         <div class="hero-car">
           <div class="hero-car-top">
-            <img src="https://imghippo.com/i/gHda2526UE.jpg" alt="Luxury car tinted in Nakuru" loading="lazy" />
+            <img src="https://files.catbox.moe/dn3vke.jpg" alt="Luxury car tinted in Nakuru" loading="lazy" />
             <div class="hero-car-caption">Clean tint & lighting finish – Nakuru</div>
           </div>
           <div class="quick-services">
@@ -1029,7 +1084,7 @@
         <div class="section-header">
           <h2 class="section-title">Our Recent Work</h2>
           <p class="section-subtitle">
-            Real cars we have upgraded in Nakuru – tinting, buffing, interior, lights and music systems.
+            Real cars we have upgraded in Nakuru – tinting, buffing, seat covers, lights and music systems.
           </p>
         </div>
 
@@ -1037,7 +1092,7 @@
           <button class="filter-pill active" data-filter="all">All</button>
           <button class="filter-pill" data-filter="tinting">Tinting</button>
           <button class="filter-pill" data-filter="buffing">Buffing</button>
-          <button class="filter-pill" data-filter="seats">Seats</button>
+          <button class="filter-pill" data-filter="seats">Seat Covers</button>
           <button class="filter-pill" data-filter="lights">Lights</button>
           <button class="filter-pill" data-filter="music">Music</button>
         </div>
@@ -1045,112 +1100,156 @@
         <div class="gallery-grid">
           <!-- Car Buffing Images -->
           <div class="gallery-item" data-category="buffing">
-            <img src="https://imghippo.com/i/rnp7867QPk.jpg" alt="Car buffing and polishing in Nakuru" loading="lazy" />
+            <img src="https://files.catbox.moe/ysxj4b.jpg" alt="Car buffing Nakuru" loading="lazy" />
             <div class="gallery-label">Buffing – deep gloss</div>
           </div>
           <div class="gallery-item" data-category="buffing">
-            <img src="https://imghippo.com/i/NTY4740jCs.jpg" alt="Buffing before and after in Nakuru" loading="lazy" />
+            <img src="https://files.catbox.moe/xpo5t1.jpg" alt="Buffing before and after Nakuru" loading="lazy" />
             <div class="gallery-label">Buffing – before & after</div>
           </div>
           <div class="gallery-item" data-category="buffing">
-            <img src="https://imghippo.com/i/AqdN5773ehY.jpg" alt="Car polishing Nakuru" loading="lazy" />
+            <img src="https://files.catbox.moe/u2n4xm.jpg" alt="Car polishing Nakuru" loading="lazy" />
             <div class="gallery-label">Professional polishing</div>
           </div>
           <div class="gallery-item" data-category="buffing">
-            <img src="https://imghippo.com/i/Jb1533eg.jpg" alt="Buffing service Nakuru" loading="lazy" />
+            <img src="https://files.catbox.moe/1q8yw5.jpg" alt="Buffing service Nakuru" loading="lazy" />
             <div class="gallery-label">Paint restoration</div>
           </div>
           <div class="gallery-item" data-category="buffing">
-            <img src="https://imghippo.com/i/dazD9762qU.jpg" alt="Machine buffing Nakuru" loading="lazy" />
+            <img src="https://files.catbox.moe/gkr68r.jpg" alt="Machine buffing Nakuru" loading="lazy" />
             <div class="gallery-label">Machine buffing</div>
           </div>
+          <div class="gallery-item" data-category="buffing">
+            <img src="https://files.catbox.moe/vvzjxj.jpg" alt="Buffing work Nakuru" loading="lazy" />
+            <div class="gallery-label">Buffing work</div>
+          </div>
+          <div class="gallery-item" data-category="buffing">
+            <img src="https://files.catbox.moe/8jbu15.jpg" alt="Car buffing Nakuru" loading="lazy" />
+            <div class="gallery-label">Car buffing</div>
+          </div>
+          <div class="gallery-item" data-category="buffing">
+            <img src="https://files.catbox.moe/czt3px.jpg" alt="Buffing service Nakuru" loading="lazy" />
+            <div class="gallery-label">Buffing service</div>
+          </div>
+          <div class="gallery-item" data-category="buffing">
+            <img src="https://files.catbox.moe/cjt39i.jpg" alt="Professional buffing" loading="lazy" />
+            <div class="gallery-label">Professional buffing</div>
+          </div>
+          <div class="gallery-item" data-category="buffing">
+            <img src="https://files.catbox.moe/ch6b6a.jpg" alt="Buffing finish Nakuru" loading="lazy" />
+            <div class="gallery-label">Buffing finish</div>
+          </div>
 
-          <!-- Seat Upgrading Images -->
+          <!-- Seat Covers Images -->
           <div class="gallery-item" data-category="seats">
-            <img src="https://imghippo.com/i/jAW1859fo.jpg" alt="Seat upgrading with new covers Nakuru" loading="lazy" />
-            <div class="gallery-label">Seat upgrade – leather</div>
+            <img src="https://files.catbox.moe/aw3jjp.jpg" alt="Seat covers installation Nakuru" loading="lazy" />
+            <div class="gallery-label">Seat covers – leather</div>
           </div>
           <div class="gallery-item" data-category="seats">
-            <img src="https://imghippo.com/i/vugm9950glQ.jpg" alt="Interior seat refresh Nakuru" loading="lazy" />
-            <div class="gallery-label">Interior refresh</div>
+            <img src="https://files.catbox.moe/a7ak3l.jpg" alt="Seat covers Nakuru" loading="lazy" />
+            <div class="gallery-label">Seat covers</div>
           </div>
           <div class="gallery-item" data-category="seats">
-            <img src="https://imghippo.com/i/jVF5178ezw.jpg" alt="Custom seat covers Nakuru" loading="lazy" />
+            <img src="https://files.catbox.moe/kfvyrg.jpg" alt="Custom seat covers Nakuru" loading="lazy" />
             <div class="gallery-label">Custom seat covers</div>
           </div>
           <div class="gallery-item" data-category="seats">
-            <img src="https://imghippo.com/i/HHNL5519hY.jpg" alt="Seat reupholstery Nakuru" loading="lazy" />
-            <div class="gallery-label">Seat reupholstery</div>
+            <img src="https://files.catbox.moe/y1r66t.jpg" alt="Seat installation Nakuru" loading="lazy" />
+            <div class="gallery-label">Seat installation</div>
           </div>
           <div class="gallery-item" data-category="seats">
-            <img src="https://imghippo.com/i/Bjv9340Ens.jpg" alt="Interior upgrade Nakuru" loading="lazy" />
-            <div class="gallery-label">Premium interior</div>
+            <img src="https://files.catbox.moe/122k5i.jpg" alt="Seat covers work Nakuru" loading="lazy" />
+            <div class="gallery-label">Seat covers work</div>
+          </div>
+          <div class="gallery-item" data-category="seats">
+            <img src="https://files.catbox.moe/26bwxa.jpg" alt="Seat upgrade Nakuru" loading="lazy" />
+            <div class="gallery-label">Seat upgrade</div>
+          </div>
+          <div class="gallery-item" data-category="seats">
+            <img src="https://files.catbox.moe/sqj8gc.jpg" alt="Interior seats Nakuru" loading="lazy" />
+            <div class="gallery-label">Interior seats</div>
+          </div>
+          <div class="gallery-item" data-category="seats">
+            <img src="https://files.catbox.moe/2joero.jpg" alt="Seat covers installation" loading="lazy" />
+            <div class="gallery-label">Seat installation</div>
           </div>
 
           <!-- Car Tinting Images -->
           <div class="gallery-item" data-category="tinting">
-            <img src="https://imghippo.com/i/gHda2526UE.jpg" alt="Car tinting Nakuru luxury car" loading="lazy" />
+            <img src="https://files.catbox.moe/dn3vke.jpg" alt="Car tinting Nakuru luxury car" loading="lazy" />
             <div class="gallery-label">Luxury car tint</div>
           </div>
           <div class="gallery-item" data-category="tinting">
-            <img src="https://imghippo.com/i/msg9852s.jpg" alt="Car tinting side view Nakuru" loading="lazy" />
-            <div class="gallery-label">Full side tint</div>
+            <img src="https://files.catbox.moe/7njmx2.jpg" alt="Car tinting Nakuru" loading="lazy" />
+            <div class="gallery-label">Car tinting</div>
           </div>
           <div class="gallery-item" data-category="tinting">
-            <img src="https://imghippo.com/i/JpnG1403hwI.jpg" alt="Tinted SUV Nakuru" loading="lazy" />
-            <div class="gallery-label">Tinted SUV</div>
+            <img src="https://files.catbox.moe/5182gz.jpg" alt="Tinted car Nakuru" loading="lazy" />
+            <div class="gallery-label">Tinted car</div>
           </div>
           <div class="gallery-item" data-category="tinting">
-            <img src="https://imghippo.com/i/Y1033C.jpg" alt="Window tinting Nakuru" loading="lazy" />
-            <div class="gallery-label">Clean window tint</div>
+            <img src="https://files.catbox.moe/74wrf7.jpg" alt="Window tinting Nakuru" loading="lazy" />
+            <div class="gallery-label">Window tinting</div>
           </div>
           <div class="gallery-item" data-category="tinting">
-            <img src="https://imghippo.com/i/EY8355vI.jpg" alt="Professional tinting Nakuru" loading="lazy" />
-            <div class="gallery-label">Professional tint job</div>
+            <img src="https://files.catbox.moe/u2n4xm.jpg" alt="Car tint work Nakuru" loading="lazy" />
+            <div class="gallery-label">Car tint work</div>
+          </div>
+          <div class="gallery-item" data-category="tinting">
+            <img src="https://files.catbox.moe/6ep82j.jpg" alt="Tinting service Nakuru" loading="lazy" />
+            <div class="gallery-label">Tinting service</div>
+          </div>
+          <div class="gallery-item" data-category="tinting">
+            <img src="https://files.catbox.moe/hrgokb.jpg" alt="Professional tinting Nakuru" loading="lazy" />
+            <div class="gallery-label">Professional tint</div>
+          </div>
+          <div class="gallery-item" data-category="tinting">
+            <img src="https://files.catbox.moe/55mll7.jpg" alt="Car window tint Nakuru" loading="lazy" />
+            <div class="gallery-label">Window tint</div>
           </div>
 
-          <!-- Lights and Projectors Images -->
+          <!-- Lights Upgrading Images -->
           <div class="gallery-item" data-category="lights">
-            <img src="https://imghippo.com/i/YIo3944U.jpg" alt="LED headlights Nakuru" loading="lazy" />
-            <div class="gallery-label">LED headlights</div>
+            <img src="https://files.catbox.moe/w0hh8m.jpg" alt="LED lights Nakuru" loading="lazy" />
+            <div class="gallery-label">LED lights</div>
           </div>
           <div class="gallery-item" data-category="lights">
-            <img src="https://imghippo.com/i/yKt7723xtA.jpg" alt="Projector lights upgrade Nakuru" loading="lazy" />
+            <img src="https://files.catbox.moe/ex0zce.jpg" alt="Headlights Nakuru" loading="lazy" />
+            <div class="gallery-label">Headlights</div>
+          </div>
+          <div class="gallery-item" data-category="lights">
+            <img src="https://files.catbox.moe/2js0vh.jpg" alt="Lights upgrade Nakuru" loading="lazy" />
+            <div class="gallery-label">Lights upgrade</div>
+          </div>
+          <div class="gallery-item" data-category="lights">
+            <img src="https://files.catbox.moe/hfw8rr.jpg" alt="Projector lights Nakuru" loading="lazy" />
             <div class="gallery-label">Projector lights</div>
           </div>
           <div class="gallery-item" data-category="lights">
-            <img src="https://imghippo.com/i/TvJ8829Jkg.jpg" alt="Car lights installation Nakuru" loading="lazy" />
-            <div class="gallery-label">Light installation</div>
+            <img src="https://files.catbox.moe/uo3qpo.jpg" alt="LED installation Nakuru" loading="lazy" />
+            <div class="gallery-label">LED installation</div>
           </div>
           <div class="gallery-item" data-category="lights">
-            <img src="https://imghippo.com/i/HexH4278FCg.jpg" alt="LED bulbs Nakuru" loading="lazy" />
-            <div class="gallery-label">LED bulbs upgrade</div>
-          </div>
-          <div class="gallery-item" data-category="lights">
-            <img src="https://imghippo.com/i/lR9742uw.jpg" alt="Headlight restoration Nakuru" loading="lazy" />
-            <div class="gallery-label">Headlight restoration</div>
+            <img src="https://files.catbox.moe/9faf88.jpg" alt="Car lights Nakuru" loading="lazy" />
+            <div class="gallery-label">Car lights</div>
           </div>
 
           <!-- Music Installation Images -->
           <div class="gallery-item" data-category="music">
-            <img src="https://imghippo.com/i/pZp2594teg.jpg" alt="Music system installation Nakuru" loading="lazy" />
-            <div class="gallery-label">Music system install</div>
+            <img src="https://files.catbox.moe/r02fw8.jpg" alt="Music system installation Nakuru" loading="lazy" />
+            <div class="gallery-label">Music system</div>
           </div>
           <div class="gallery-item" data-category="music">
-            <img src="https://imghippo.com/i/caig7627FIc.jpg" alt="Car speakers installation Nakuru" loading="lazy" />
-            <div class="gallery-label">Speaker installation</div>
+            <img src="https://files.catbox.moe/yanhhg.jpg" alt="Car speakers Nakuru" loading="lazy" />
+            <div class="gallery-label">Car speakers</div>
           </div>
           <div class="gallery-item" data-category="music">
-            <img src="https://imghippo.com/i/Ekt4103If.jpg" alt="Amplifier setup Nakuru" loading="lazy" />
-            <div class="gallery-label">Amplifier setup</div>
+            <img src="https://files.catbox.moe/fl1bx6.jpg" alt="Sound system Nakuru" loading="lazy" />
+            <div class="gallery-label">Sound system</div>
           </div>
           <div class="gallery-item" data-category="music">
-            <img src="https://imghippo.com/i/KrCm1131EM.jpg" alt="Sound system wiring Nakuru" loading="lazy" />
-            <div class="gallery-label">Professional wiring</div>
-          </div>
-          <div class="gallery-item" data-category="music">
-            <img src="https://imghippo.com/i/cCZO9470cmw.jpg" alt="Subwoofer and amp setup Nakuru" loading="lazy" />
-            <div class="gallery-label">Subwoofer & amp</div>
+            <img src="https://files.catbox.moe/f6ouln.jpg" alt="Audio installation Nakuru" loading="lazy" />
+            <div class="gallery-label">Audio installation</div>
           </div>
         </div>
       </div>
@@ -1280,7 +1379,7 @@
                 <option value="">Select service</option>
                 <option value="tinting">Car Tinting</option>
                 <option value="buffing">Buffing & Polishing</option>
-                <option value="seats">Seat Upgrading</option>
+                <option value="seats">Seat Covers</option>
                 <option value="lights">LED Lights & Projectors</option>
                 <option value="music">Music System</option>
                 <option value="android">Android Radio</option>
@@ -1406,7 +1505,7 @@
       const messages = {
         tint: "Hello, I'm interested in car tinting services in Nakuru.",
         buff: "Hello, I need car buffing/polishing service in Nakuru.",
-        seats: "Hello, I want seat upgrading/covering in Nakuru.",
+        seats: "Hello, I want seat covers installation in Nakuru.",
         lights: "Hello, I'm interested in LED or projector lights upgrade.",
         music: "Hello, I want music system installation in Nakuru.",
         android: "Hello, I need Android radio installation in my car."
@@ -1426,4 +1525,4 @@
     });
   </script>
 </body>
-                                                                  </html>
+  </html>
