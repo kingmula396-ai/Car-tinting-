@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Car Tinting, Buffing & Accessories in Nakuru | Nakuru Tint & Auto</title>
+  <title>Car Tinting & Accessories Nakuru</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Professional car tinting, buffing, seat upgrades, lights and music installation in Nakuru. Located on Tom Mboya Street, opposite Polo Center.">
   <meta name="keywords" content="car tinting Nakuru, car buffing Nakuru, seat covers Nakuru, Android radio installation, car music systems Nakuru, LED lights Nakuru">
@@ -405,10 +405,59 @@
       border-top: 1px solid #2a2b3a;
     }
 
-    /* Pricing - Added extra padding */
+    /* GALLERY SECTION - AFTER SERVICES */
+    .gallery-section {
+      background: var(--bg-section);
+      padding: 3.5rem 1.25rem;
+    }
+
+    .gallery-category {
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      background: var(--bg-alt);
+      border-radius: 1rem;
+      border: 1px solid var(--border-soft);
+    }
+
+    .gallery-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .gallery-category h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .simple-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .simple-gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 0.8rem;
+      border: 2px solid var(--border-soft);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      background-color: #111217;
+    }
+
+    .simple-gallery img:hover {
+      transform: scale(1.03);
+      border-color: var(--accent);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Pricing */
     .pricing {
       background: var(--bg-main);
-      padding-bottom: 4rem;
     }
 
     .pricing-table {
@@ -440,114 +489,6 @@
       margin-top: 0.75rem;
       font-size: 0.8rem;
       color: var(--text-muted);
-    }
-
-    /* UPDATED GALLERY STYLES */
-    .gallery-section {
-      background: var(--bg-section);
-      padding: 3.5rem 1.25rem;
-      min-height: 300px;
-    }
-
-    .gallery-category {
-      margin-bottom: 3rem;
-      padding: 1.5rem;
-      background: var(--bg-alt);
-      border-radius: 1rem;
-      border: 1px solid var(--border-soft);
-    }
-
-    .gallery-category:last-child {
-      margin-bottom: 0;
-    }
-
-    .gallery-category h2 {
-      font-size: 1.7rem;
-      margin-bottom: 1.5rem;
-      color: #fff;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.5rem;
-      display: inline-block;
-    }
-
-    .simple-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-      min-height: 220px;
-      position: relative;
-    }
-
-    /* Loading text for empty galleries */
-    .simple-gallery:empty::before {
-      content: "Loading gallery…";
-      color: #777;
-      font-size: 0.85rem;
-      display: block;
-      padding: 1rem 0;
-      text-align: center;
-      width: 100%;
-      grid-column: 1 / -1;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 0.8rem;
-      background: #0b0c12;
-      min-height: 200px;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      background: linear-gradient(45deg, #111217, #191a27);
-    }
-
-    .gallery-item img.loaded {
-      opacity: 1;
-    }
-
-    .gallery-item img:hover {
-      transform: scale(1.05);
-    }
-
-    .gallery-placeholder {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(45deg, #111217, #191a27);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
-
-    .gallery-error {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, #111217, #191a27);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .gallery-error span {
-      margin-top: 0.5rem;
-      font-size: 0.7rem;
-      opacity: 0.7;
     }
 
     /* Reviews */
@@ -886,8 +827,8 @@
       <nav class="nav-links">
         <a href="#hero">Home</a>
         <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
         <a href="#gallery">Gallery</a>
+        <a href="#pricing">Pricing</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1083,6 +1024,90 @@
       </div>
     </section>
 
+    <!-- GALLERY - AFTER SERVICES -->
+    <section id="gallery" class="gallery-section fade-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Work Gallery</h2>
+          <p class="section-subtitle">
+            Real cars we have upgraded in Nakuru – see our quality work.
+          </p>
+        </div>
+
+        <!-- Seat Covers Installation -->
+        <div class="gallery-category">
+          <h2>Seat Covers Installation</h2>
+          <div class="simple-gallery">
+            <img src="https://files.catbox.moe/aw3jjp.jpg" alt="Seat covers installation">
+            <img src="https://files.catbox.moe/a7ak3l.jpg" alt="Seat covers installation">
+            <img src="https://files.catbox.moe/kfvyrg.jpg" alt="Seat covers installation">
+            <img src="https://files.catbox.moe/y1r66t.jpg" alt="Seat covers installation">
+            <img src="https://files.catbox.moe/122k5i.jpg" alt="Seat covers installation">
+            <img src="https://files.catbox.moe/26bwxa.jpg" alt="Seat covers installation">
+            <img src="https://files.catbox.moe/sqj8gc.jpg" alt="Seat covers installation">
+            <img src="https://files.catbox.moe/2joero.jpg" alt="Seat covers installation">
+          </div>
+        </div>
+
+        <!-- Car Buffing -->
+        <div class="gallery-category">
+          <h2>Car Buffing</h2>
+          <div class="simple-gallery">
+            <img src="https://files.catbox.moe/ysxj4b.jpg" alt="Car buffing">
+            <img src="https://files.catbox.moe/xpo5t1.jpg" alt="Car buffing">
+            <img src="https://files.catbox.moe/u2n4xm.jpg" alt="Car buffing">
+            <img src="https://files.catbox.moe/1q8yw5.jpg" alt="Car buffing">
+            <img src="https://files.catbox.moe/gkr68r.jpg" alt="Car buffing">
+            <img src="https://files.catbox.moe/vvzjxj.jpg" alt="Car buffing">
+            <img src="https://files.catbox.moe/8jbu15.jpg" alt="Car buffing">
+            <img src="https://files.catbox.moe/czt3px.jpg" alt="Car buffing">
+            <img src="https://files.catbox.moe/cjt39i.jpg" alt="Car buffing">
+            <img src="https://files.catbox.moe/ch6b6a.jpg" alt="Car buffing">
+          </div>
+        </div>
+
+        <!-- Car Tinting -->
+        <div class="gallery-category">
+          <h2>Car Tinting</h2>
+          <div class="simple-gallery">
+            <img src="https://files.catbox.moe/dn3vke.jpg" alt="Car tinting">
+            <img src="https://files.catbox.moe/7njmx2.jpg" alt="Car tinting">
+            <img src="https://files.catbox.moe/5182gz.jpg" alt="Car tinting">
+            <img src="https://files.catbox.moe/74wrf7.jpg" alt="Car tinting">
+            <img src="https://files.catbox.moe/u2n4xm.jpg" alt="Car tinting">
+            <img src="https://files.catbox.moe/6ep82j.jpg" alt="Car tinting">
+            <img src="https://files.catbox.moe/hrgokb.jpg" alt="Car tinting">
+            <img src="https://files.catbox.moe/55mll7.jpg" alt="Car tinting">
+          </div>
+        </div>
+
+        <!-- Music Installation -->
+        <div class="gallery-category">
+          <h2>Music Installation</h2>
+          <div class="simple-gallery">
+            <img src="https://files.catbox.moe/r02fw8.jpg" alt="Music system installation">
+            <img src="https://files.catbox.moe/yanhhg.jpg" alt="Music system installation">
+            <img src="https://files.catbox.moe/fl1bx6.jpg" alt="Music system installation">
+            <img src="https://files.catbox.moe/f6ouln.jpg" alt="Music system installation">
+          </div>
+        </div>
+
+        <!-- Lights Upgrading -->
+        <div class="gallery-category">
+          <h2>Lights Upgrading</h2>
+          <div class="simple-gallery">
+            <img src="https://files.catbox.moe/w0hh8m.jpg" alt="LED lights">
+            <img src="https://files.catbox.moe/ex0zce.jpg" alt="Headlights">
+            <img src="https://files.catbox.moe/2js0vh.jpg" alt="Lights upgrade">
+            <img src="https://files.catbox.moe/hfw8rr.jpg" alt="Projector lights">
+            <img src="https://files.catbox.moe/uo3qpo.jpg" alt="LED installation">
+            <img src="https://files.catbox.moe/9faf88.jpg" alt="Car lights">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- PRICING -->
     <section id="pricing" class="pricing fade-section">
       <div class="container">
@@ -1130,61 +1155,6 @@
             WhatsApp for Exact Quote
           </a>
         </div>
-        <!-- Added spacing to prevent visual cutoff -->
-        <div style="height:2rem"></div>
-      </div>
-    </section>
-
-    <!-- UPDATED GALLERY SECTION -->
-    <section id="gallery" class="gallery-section fade-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our Work Gallery</h2>
-          <p class="section-subtitle">
-            Real cars we have upgraded in Nakuru – see our quality work.
-          </p>
-        </div>
-
-        <!-- Seat Covers Installation -->
-        <div class="gallery-category">
-          <h2>Seat Covers Installation</h2>
-          <div class="simple-gallery" id="seat-covers-gallery">
-            <!-- Images will be loaded by JavaScript -->
-          </div>
-        </div>
-
-        <!-- Car Buffing -->
-        <div class="gallery-category">
-          <h2>Car Buffing</h2>
-          <div class="simple-gallery" id="car-buffing-gallery">
-            <!-- Images will be loaded by JavaScript -->
-          </div>
-        </div>
-
-        <!-- Car Tinting -->
-        <div class="gallery-category">
-          <h2>Car Tinting</h2>
-          <div class="simple-gallery" id="car-tinting-gallery">
-            <!-- Images will be loaded by JavaScript -->
-          </div>
-        </div>
-
-        <!-- Music Installation -->
-        <div class="gallery-category">
-          <h2>Music Installation</h2>
-          <div class="simple-gallery" id="music-installation-gallery">
-            <!-- Images will be loaded by JavaScript -->
-          </div>
-        </div>
-
-        <!-- Lights Upgrading -->
-        <div class="gallery-category">
-          <h2>Lights Upgrading</h2>
-          <div class="simple-gallery" id="lights-upgrading-gallery">
-            <!-- Images will be loaded by JavaScript -->
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -1410,163 +1380,6 @@
       // Show success message
       alert('Thank you! Opening WhatsApp to send your booking request...');
     });
-
-    // Gallery images with fallback handling
-    const galleryImages = {
-      'seat-covers-gallery': [
-        'https://files.catbox.moe/aw3jjp.jpg',
-        'https://files.catbox.moe/a7ak3l.jpg',
-        'https://files.catbox.moe/kfvyrg.jpg',
-        'https://files.catbox.moe/y1r66t.jpg',
-        'https://files.catbox.moe/122k5i.jpg',
-        'https://files.catbox.moe/26bwxa.jpg',
-        'https://files.catbox.moe/sqj8gc.jpg',
-        'https://files.catbox.moe/2joero.jpg'
-      ],
-      'car-buffing-gallery': [
-        'https://files.catbox.moe/ysxj4b.jpg',
-        'https://files.catbox.moe/xpo5t1.jpg',
-        'https://files.catbox.moe/u2n4xm.jpg',
-        'https://files.catbox.moe/1q8yw5.jpg',
-        'https://files.catbox.moe/gkr68r.jpg',
-        'https://files.catbox.moe/vvzjxj.jpg',
-        'https://files.catbox.moe/8jbu15.jpg',
-        'https://files.catbox.moe/czt3px.jpg',
-        'https://files.catbox.moe/cjt39i.jpg',
-        'https://files.catbox.moe/ch6b6a.jpg'
-      ],
-      'car-tinting-gallery': [
-        'https://files.catbox.moe/dn3vke.jpg',
-        'https://files.catbox.moe/7njmx2.jpg',
-        'https://files.catbox.moe/5182gz.jpg',
-        'https://files.catbox.moe/74wrf7.jpg',
-        'https://files.catbox.moe/u2n4xm.jpg',
-        'https://files.catbox.moe/6ep82j.jpg',
-        'https://files.catbox.moe/hrgokb.jpg',
-        'https://files.catbox.moe/55mll7.jpg'
-      ],
-      'music-installation-gallery': [
-        'https://files.catbox.moe/r02fw8.jpg',
-        'https://files.catbox.moe/yanhhg.jpg',
-        'https://files.catbox.moe/fl1bx6.jpg',
-        'https://files.catbox.moe/f6ouln.jpg'
-      ],
-      'lights-upgrading-gallery': [
-        'https://files.catbox.moe/w0hh8m.jpg',
-        'https://files.catbox.moe/ex0zce.jpg',
-        'https://files.catbox.moe/2js0vh.jpg',
-        'https://files.catbox.moe/hfw8rr.jpg',
-        'https://files.catbox.moe/uo3qpo.jpg',
-        'https://files.catbox.moe/9faf88.jpg'
-      ]
-    };
-
-    // FIXED: Corrected fallback image URLs (fixed typo from w-400 to w=400)
-    const fallbackImages = {
-      'seat-covers-gallery': [
-        'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400&h=300&fit=crop' // FIXED: w=400
-      ],
-      'car-buffing-gallery': [
-        'https://images.unsplash.com/photo-1565689221354-d85c57f8be7a?w=400&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400&h=300&fit=crop'
-      ],
-      'car-tinting-gallery': [
-        'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop',
-        'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400&h=300&fit=crop' // FIXED: w=400
-      ],
-      'music-installation-gallery': [
-        'https://images.unsplash.com/photo-1565689221354-d85c57f8be7a?w=400&h=300&fit=crop'
-      ],
-      'lights-upgrading-gallery': [
-        'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop'
-      ]
-    };
-
-    // Function to create image element with error handling
-    function createGalleryImage(src, alt, galleryId, index) {
-      const galleryItem = document.createElement('div');
-      galleryItem.className = 'gallery-item';
-      
-      const img = document.createElement('img');
-      img.alt = alt;
-      img.loading = 'lazy';
-      img.style.opacity = '0';
-      img.style.transition = 'opacity 0.3s ease';
-      
-      // Create placeholder
-      const placeholder = document.createElement('div');
-      placeholder.className = 'gallery-placeholder';
-      placeholder.innerHTML = 'Loading image...';
-      
-      galleryItem.appendChild(placeholder);
-      galleryItem.appendChild(img);
-      
-      // Load image with timeout
-      const imageLoadTimeout = setTimeout(() => {
-        if (!img.complete || img.naturalHeight === 0) {
-          // Try fallback image
-          const fallbackIndex = index % fallbackImages[galleryId].length;
-          img.src = fallbackImages[galleryId][fallbackIndex];
-          console.log(`Using fallback for image ${index} in ${galleryId}`);
-        }
-      }, 3000);
-      
-      img.onload = function() {
-        clearTimeout(imageLoadTimeout);
-        img.classList.add('loaded');
-        img.style.opacity = '1';
-        if (placeholder.parentNode) {
-          placeholder.remove();
-        }
-        console.log(`Image loaded successfully: ${src}`);
-      };
-      
-      img.onerror = function() {
-        clearTimeout(imageLoadTimeout);
-        // Try fallback image
-        const fallbackIndex = index % fallbackImages[galleryId].length;
-        img.src = fallbackImages[galleryId][fallbackIndex];
-        img.alt = alt + ' (fallback)';
-        
-        // Create error message
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'gallery-error';
-        errorDiv.innerHTML = `Image not available<span>Using sample image instead</span>`;
-        
-        if (placeholder.parentNode) {
-          placeholder.remove();
-        }
-        galleryItem.appendChild(errorDiv);
-        
-        console.log(`Image failed to load, using fallback: ${src}`);
-      };
-      
-      // Set source after event handlers
-      img.src = src;
-      
-      return galleryItem;
-    }
-
-    // Initialize galleries - FIXED: Single initialization
-    function initializeGalleries() {
-      for (const galleryId in galleryImages) {
-        const galleryElement = document.getElementById(galleryId);
-        if (!galleryElement) continue;
-        
-        galleryImages[galleryId].forEach((src, index) => {
-          const alt = galleryId.replace('-gallery', '').replace('-', ' ') + ' image ' + (index + 1);
-          const galleryItem = createGalleryImage(src, alt, galleryId, index);
-          galleryElement.appendChild(galleryItem);
-        });
-      }
-    }
-
-    // FIXED: Initialize galleries once when DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => {
-      initializeGalleries();
-    });
   </script>
 </body>
-  </html>
+</html>
