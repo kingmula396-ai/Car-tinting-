@@ -284,7 +284,8 @@
     .hero-car img {
       border-radius: 0.9rem;
       width: 100%;
-      height: auto;
+      height: 300px;
+      object-fit: cover;
       display: block;
     }
 
@@ -317,9 +318,9 @@
     }
 
     .service-card {
-      background: #1a1b26; /* Classic dark blue-grey background */
+      background: #1a1b26;
       border-radius: 1rem;
-      border: 1px solid #2a2b3a; /* Slightly lighter border */
+      border: 1px solid #2a2b3a;
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
@@ -440,71 +441,97 @@
       color: var(--text-muted);
     }
 
-    /* Gallery */
-    .gallery {
+    /* UPDATED GALLERY STYLES */
+    .gallery-section {
       background: var(--bg-section);
+      padding: 3.5rem 1.25rem;
     }
 
-    .gallery-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.8rem;
-    }
-
-    .filter-pill {
-      padding: 0.25rem 0.8rem;
-      border-radius: 999px;
+    .gallery-category {
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      background: var(--bg-alt);
+      border-radius: 1rem;
       border: 1px solid var(--border-soft);
-      color: var(--text-muted);
-      cursor: pointer;
-      background: transparent;
-      transition: all 0.15s ease-out;
     }
 
-    .filter-pill.active,
-    .filter-pill:hover {
-      border-color: var(--accent);
+    .gallery-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .gallery-category h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1.5rem;
       color: #fff;
-      background: #191a27;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+      display: inline-block;
     }
 
-    .gallery-grid {
+    .simple-gallery {
       display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin-top: 1.5rem;
     }
 
     .gallery-item {
       position: relative;
       overflow: hidden;
       border-radius: 0.8rem;
-      background: #101119;
-      border: 1px solid var(--border-soft);
-      cursor: pointer;
-      aspect-ratio: 4/3;
+      background: #0b0c12;
+      min-height: 200px;
     }
 
     .gallery-item img {
       width: 100%;
-      height: 100%;
+      height: 200px;
       object-fit: cover;
-      transition: transform 0.3s ease-out;
+      display: block;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      background: linear-gradient(45deg, #111217, #191a27);
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.06);
+    .gallery-item img.loaded {
+      opacity: 1;
     }
 
-    .gallery-label {
+    .gallery-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(45deg, #111217, #191a27);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .gallery-error {
       position: absolute;
-      left: 0.6rem;
-      bottom: 0.55rem;
-      font-size: 0.75rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.6);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #111217, #191a27);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .gallery-error span {
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      opacity: 0.7;
     }
 
     /* Reviews */
@@ -750,6 +777,10 @@
       .contact-grid {
         grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       }
+
+      .simple-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 768px) {
@@ -786,7 +817,7 @@
         display: none;
       }
 
-      .gallery-grid {
+      .simple-gallery {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -795,10 +826,14 @@
         text-align: center;
         gap: 0.5rem;
       }
+
+      .gallery-category {
+        padding: 1rem;
+      }
     }
 
     @media (max-width: 480px) {
-      .gallery-grid {
+      .simple-gallery {
         grid-template-columns: 1fr;
       }
       
@@ -813,6 +848,10 @@
       
       section {
         padding: 2rem 1rem;
+      }
+
+      .gallery-category h2 {
+        font-size: 1.4rem;
       }
     }
   </style>
@@ -1078,180 +1117,56 @@
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="gallery fade-section">
+    <!-- UPDATED GALLERY SECTION -->
+    <section id="gallery" class="gallery-section fade-section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Our Recent Work</h2>
+          <h2 class="section-title">Our Work Gallery</h2>
           <p class="section-subtitle">
-            Real cars we have upgraded in Nakuru – tinting, buffing, seat covers, lights and music systems.
+            Real cars we have upgraded in Nakuru – see our quality work.
           </p>
         </div>
 
-        <div class="gallery-filters">
-          <button class="filter-pill active" data-filter="all">All</button>
-          <button class="filter-pill" data-filter="tinting">Tinting</button>
-          <button class="filter-pill" data-filter="buffing">Buffing</button>
-          <button class="filter-pill" data-filter="seats">Seat Covers</button>
-          <button class="filter-pill" data-filter="lights">Lights</button>
-          <button class="filter-pill" data-filter="music">Music</button>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Car Buffing Images -->
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/ysxj4b.jpg" alt="Car buffing Nakuru" loading="lazy" />
-            <div class="gallery-label">Buffing – deep gloss</div>
-          </div>
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/xpo5t1.jpg" alt="Buffing before and after Nakuru" loading="lazy" />
-            <div class="gallery-label">Buffing – before & after</div>
-          </div>
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/u2n4xm.jpg" alt="Car polishing Nakuru" loading="lazy" />
-            <div class="gallery-label">Professional polishing</div>
-          </div>
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/1q8yw5.jpg" alt="Buffing service Nakuru" loading="lazy" />
-            <div class="gallery-label">Paint restoration</div>
-          </div>
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/gkr68r.jpg" alt="Machine buffing Nakuru" loading="lazy" />
-            <div class="gallery-label">Machine buffing</div>
-          </div>
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/vvzjxj.jpg" alt="Buffing work Nakuru" loading="lazy" />
-            <div class="gallery-label">Buffing work</div>
-          </div>
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/8jbu15.jpg" alt="Car buffing Nakuru" loading="lazy" />
-            <div class="gallery-label">Car buffing</div>
-          </div>
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/czt3px.jpg" alt="Buffing service Nakuru" loading="lazy" />
-            <div class="gallery-label">Buffing service</div>
-          </div>
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/cjt39i.jpg" alt="Professional buffing" loading="lazy" />
-            <div class="gallery-label">Professional buffing</div>
-          </div>
-          <div class="gallery-item" data-category="buffing">
-            <img src="https://files.catbox.moe/ch6b6a.jpg" alt="Buffing finish Nakuru" loading="lazy" />
-            <div class="gallery-label">Buffing finish</div>
-          </div>
-
-          <!-- Seat Covers Images -->
-          <div class="gallery-item" data-category="seats">
-            <img src="https://files.catbox.moe/aw3jjp.jpg" alt="Seat covers installation Nakuru" loading="lazy" />
-            <div class="gallery-label">Seat covers – leather</div>
-          </div>
-          <div class="gallery-item" data-category="seats">
-            <img src="https://files.catbox.moe/a7ak3l.jpg" alt="Seat covers Nakuru" loading="lazy" />
-            <div class="gallery-label">Seat covers</div>
-          </div>
-          <div class="gallery-item" data-category="seats">
-            <img src="https://files.catbox.moe/kfvyrg.jpg" alt="Custom seat covers Nakuru" loading="lazy" />
-            <div class="gallery-label">Custom seat covers</div>
-          </div>
-          <div class="gallery-item" data-category="seats">
-            <img src="https://files.catbox.moe/y1r66t.jpg" alt="Seat installation Nakuru" loading="lazy" />
-            <div class="gallery-label">Seat installation</div>
-          </div>
-          <div class="gallery-item" data-category="seats">
-            <img src="https://files.catbox.moe/122k5i.jpg" alt="Seat covers work Nakuru" loading="lazy" />
-            <div class="gallery-label">Seat covers work</div>
-          </div>
-          <div class="gallery-item" data-category="seats">
-            <img src="https://files.catbox.moe/26bwxa.jpg" alt="Seat upgrade Nakuru" loading="lazy" />
-            <div class="gallery-label">Seat upgrade</div>
-          </div>
-          <div class="gallery-item" data-category="seats">
-            <img src="https://files.catbox.moe/sqj8gc.jpg" alt="Interior seats Nakuru" loading="lazy" />
-            <div class="gallery-label">Interior seats</div>
-          </div>
-          <div class="gallery-item" data-category="seats">
-            <img src="https://files.catbox.moe/2joero.jpg" alt="Seat covers installation" loading="lazy" />
-            <div class="gallery-label">Seat installation</div>
-          </div>
-
-          <!-- Car Tinting Images -->
-          <div class="gallery-item" data-category="tinting">
-            <img src="https://files.catbox.moe/dn3vke.jpg" alt="Car tinting Nakuru luxury car" loading="lazy" />
-            <div class="gallery-label">Luxury car tint</div>
-          </div>
-          <div class="gallery-item" data-category="tinting">
-            <img src="https://files.catbox.moe/7njmx2.jpg" alt="Car tinting Nakuru" loading="lazy" />
-            <div class="gallery-label">Car tinting</div>
-          </div>
-          <div class="gallery-item" data-category="tinting">
-            <img src="https://files.catbox.moe/5182gz.jpg" alt="Tinted car Nakuru" loading="lazy" />
-            <div class="gallery-label">Tinted car</div>
-          </div>
-          <div class="gallery-item" data-category="tinting">
-            <img src="https://files.catbox.moe/74wrf7.jpg" alt="Window tinting Nakuru" loading="lazy" />
-            <div class="gallery-label">Window tinting</div>
-          </div>
-          <div class="gallery-item" data-category="tinting">
-            <img src="https://files.catbox.moe/u2n4xm.jpg" alt="Car tint work Nakuru" loading="lazy" />
-            <div class="gallery-label">Car tint work</div>
-          </div>
-          <div class="gallery-item" data-category="tinting">
-            <img src="https://files.catbox.moe/6ep82j.jpg" alt="Tinting service Nakuru" loading="lazy" />
-            <div class="gallery-label">Tinting service</div>
-          </div>
-          <div class="gallery-item" data-category="tinting">
-            <img src="https://files.catbox.moe/hrgokb.jpg" alt="Professional tinting Nakuru" loading="lazy" />
-            <div class="gallery-label">Professional tint</div>
-          </div>
-          <div class="gallery-item" data-category="tinting">
-            <img src="https://files.catbox.moe/55mll7.jpg" alt="Car window tint Nakuru" loading="lazy" />
-            <div class="gallery-label">Window tint</div>
-          </div>
-
-          <!-- Lights Upgrading Images -->
-          <div class="gallery-item" data-category="lights">
-            <img src="https://files.catbox.moe/w0hh8m.jpg" alt="LED lights Nakuru" loading="lazy" />
-            <div class="gallery-label">LED lights</div>
-          </div>
-          <div class="gallery-item" data-category="lights">
-            <img src="https://files.catbox.moe/ex0zce.jpg" alt="Headlights Nakuru" loading="lazy" />
-            <div class="gallery-label">Headlights</div>
-          </div>
-          <div class="gallery-item" data-category="lights">
-            <img src="https://files.catbox.moe/2js0vh.jpg" alt="Lights upgrade Nakuru" loading="lazy" />
-            <div class="gallery-label">Lights upgrade</div>
-          </div>
-          <div class="gallery-item" data-category="lights">
-            <img src="https://files.catbox.moe/hfw8rr.jpg" alt="Projector lights Nakuru" loading="lazy" />
-            <div class="gallery-label">Projector lights</div>
-          </div>
-          <div class="gallery-item" data-category="lights">
-            <img src="https://files.catbox.moe/uo3qpo.jpg" alt="LED installation Nakuru" loading="lazy" />
-            <div class="gallery-label">LED installation</div>
-          </div>
-          <div class="gallery-item" data-category="lights">
-            <img src="https://files.catbox.moe/9faf88.jpg" alt="Car lights Nakuru" loading="lazy" />
-            <div class="gallery-label">Car lights</div>
-          </div>
-
-          <!-- Music Installation Images -->
-          <div class="gallery-item" data-category="music">
-            <img src="https://files.catbox.moe/r02fw8.jpg" alt="Music system installation Nakuru" loading="lazy" />
-            <div class="gallery-label">Music system</div>
-          </div>
-          <div class="gallery-item" data-category="music">
-            <img src="https://files.catbox.moe/yanhhg.jpg" alt="Car speakers Nakuru" loading="lazy" />
-            <div class="gallery-label">Car speakers</div>
-          </div>
-          <div class="gallery-item" data-category="music">
-            <img src="https://files.catbox.moe/fl1bx6.jpg" alt="Sound system Nakuru" loading="lazy" />
-            <div class="gallery-label">Sound system</div>
-          </div>
-          <div class="gallery-item" data-category="music">
-            <img src="https://files.catbox.moe/f6ouln.jpg" alt="Audio installation Nakuru" loading="lazy" />
-            <div class="gallery-label">Audio installation</div>
+        <!-- Seat Covers Installation -->
+        <div class="gallery-category">
+          <h2>Seat Covers Installation</h2>
+          <div class="simple-gallery" id="seat-covers-gallery">
+            <!-- Images will be loaded by JavaScript -->
           </div>
         </div>
+
+        <!-- Car Buffing -->
+        <div class="gallery-category">
+          <h2>Car Buffing</h2>
+          <div class="simple-gallery" id="car-buffing-gallery">
+            <!-- Images will be loaded by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Car Tinting -->
+        <div class="gallery-category">
+          <h2>Car Tinting</h2>
+          <div class="simple-gallery" id="car-tinting-gallery">
+            <!-- Images will be loaded by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Music Installation -->
+        <div class="gallery-category">
+          <h2>Music Installation</h2>
+          <div class="simple-gallery" id="music-installation-gallery">
+            <!-- Images will be loaded by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Lights Upgrading -->
+        <div class="gallery-category">
+          <h2>Lights Upgrading</h2>
+          <div class="simple-gallery" id="lights-upgrading-gallery">
+            <!-- Images will be loaded by JavaScript -->
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1453,28 +1368,6 @@
       observer.observe(section);
     });
 
-    // Gallery filter
-    const filterButtons = document.querySelectorAll('.filter-pill');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    filterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-
-        galleryItems.forEach((item) => {
-          const category = item.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
-
     // Booking form submission
     const bookingForm = document.getElementById('bookingForm');
     bookingForm.addEventListener('submit', (e) => {
@@ -1500,29 +1393,167 @@
       alert('Thank you! Opening WhatsApp to send your booking request...');
     });
 
-    // Service-specific WhatsApp buttons
-    function bookService(service) {
-      const messages = {
-        tint: "Hello, I'm interested in car tinting services in Nakuru.",
-        buff: "Hello, I need car buffing/polishing service in Nakuru.",
-        seats: "Hello, I want seat covers installation in Nakuru.",
-        lights: "Hello, I'm interested in LED or projector lights upgrade.",
-        music: "Hello, I want music system installation in Nakuru.",
-        android: "Hello, I need Android radio installation in my car."
+    // Gallery images with fallback handling
+    const galleryImages = {
+      'seat-covers-gallery': [
+        'https://files.catbox.moe/aw3jjp.jpg',
+        'https://files.catbox.moe/a7ak3l.jpg',
+        'https://files.catbox.moe/kfvyrg.jpg',
+        'https://files.catbox.moe/y1r66t.jpg',
+        'https://files.catbox.moe/122k5i.jpg',
+        'https://files.catbox.moe/26bwxa.jpg',
+        'https://files.catbox.moe/sqj8gc.jpg',
+        'https://files.catbox.moe/2joero.jpg'
+      ],
+      'car-buffing-gallery': [
+        'https://files.catbox.moe/ysxj4b.jpg',
+        'https://files.catbox.moe/xpo5t1.jpg',
+        'https://files.catbox.moe/u2n4xm.jpg',
+        'https://files.catbox.moe/1q8yw5.jpg',
+        'https://files.catbox.moe/gkr68r.jpg',
+        'https://files.catbox.moe/vvzjxj.jpg',
+        'https://files.catbox.moe/8jbu15.jpg',
+        'https://files.catbox.moe/czt3px.jpg',
+        'https://files.catbox.moe/cjt39i.jpg',
+        'https://files.catbox.moe/ch6b6a.jpg'
+      ],
+      'car-tinting-gallery': [
+        'https://files.catbox.moe/dn3vke.jpg',
+        'https://files.catbox.moe/7njmx2.jpg',
+        'https://files.catbox.moe/5182gz.jpg',
+        'https://files.catbox.moe/74wrf7.jpg',
+        'https://files.catbox.moe/u2n4xm.jpg',
+        'https://files.catbox.moe/6ep82j.jpg',
+        'https://files.catbox.moe/hrgokb.jpg',
+        'https://files.catbox.moe/55mll7.jpg'
+      ],
+      'music-installation-gallery': [
+        'https://files.catbox.moe/r02fw8.jpg',
+        'https://files.catbox.moe/yanhhg.jpg',
+        'https://files.catbox.moe/fl1bx6.jpg',
+        'https://files.catbox.moe/f6ouln.jpg'
+      ],
+      'lights-upgrading-gallery': [
+        'https://files.catbox.moe/w0hh8m.jpg',
+        'https://files.catbox.moe/ex0zce.jpg',
+        'https://files.catbox.moe/2js0vh.jpg',
+        'https://files.catbox.moe/hfw8rr.jpg',
+        'https://files.catbox.moe/uo3qpo.jpg',
+        'https://files.catbox.moe/9faf88.jpg'
+      ]
+    };
+
+    // Fallback placeholder images in case catbox URLs fail
+    const fallbackImages = {
+      'seat-covers-gallery': [
+        'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400&h=300&fit=crop',
+        'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=300&fit=crop',
+        'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w-400&h=300&fit=crop'
+      ],
+      'car-buffing-gallery': [
+        'https://images.unsplash.com/photo-1565689221354-d85c57f8be7a?w=400&h=300&fit=crop',
+        'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400&h=300&fit=crop'
+      ],
+      'car-tinting-gallery': [
+        'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop',
+        'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400&h=300&fit=crop'
+      ],
+      'music-installation-gallery': [
+        'https://images.unsplash.com/photo-1565689221354-d85c57f8be7a?w=400&h=300&fit=crop'
+      ],
+      'lights-upgrading-gallery': [
+        'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop'
+      ]
+    };
+
+    // Function to create image element with error handling
+    function createGalleryImage(src, alt, galleryId, index) {
+      const galleryItem = document.createElement('div');
+      galleryItem.className = 'gallery-item';
+      
+      const img = document.createElement('img');
+      img.alt = alt;
+      img.loading = 'lazy';
+      img.style.opacity = '0';
+      img.style.transition = 'opacity 0.3s ease';
+      
+      // Create placeholder
+      const placeholder = document.createElement('div');
+      placeholder.className = 'gallery-placeholder';
+      placeholder.innerHTML = 'Loading image...';
+      
+      galleryItem.appendChild(placeholder);
+      galleryItem.appendChild(img);
+      
+      // Load image with timeout
+      const imageLoadTimeout = setTimeout(() => {
+        if (!img.complete || img.naturalHeight === 0) {
+          // Try fallback image
+          const fallbackIndex = index % fallbackImages[galleryId].length;
+          img.src = fallbackImages[galleryId][fallbackIndex];
+          console.log(`Using fallback for image ${index} in ${galleryId}`);
+        }
+      }, 3000);
+      
+      img.onload = function() {
+        clearTimeout(imageLoadTimeout);
+        img.classList.add('loaded');
+        img.style.opacity = '1';
+        if (placeholder.parentNode) {
+          placeholder.remove();
+        }
+        console.log(`Image loaded successfully: ${src}`);
       };
       
-      window.open(`https://wa.me/254768344646?text=${encodeURIComponent(messages[service] || "Hello, I need car services in Nakuru.")}`, '_blank');
+      img.onerror = function() {
+        clearTimeout(imageLoadTimeout);
+        // Try fallback image
+        const fallbackIndex = index % fallbackImages[galleryId].length;
+        img.src = fallbackImages[galleryId][fallbackIndex];
+        img.alt = alt + ' (fallback)';
+        
+        // Create error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'gallery-error';
+        errorDiv.innerHTML = `Image not available<span>Using sample image instead</span>`;
+        
+        if (placeholder.parentNode) {
+          placeholder.remove();
+        }
+        galleryItem.appendChild(errorDiv);
+        
+        console.log(`Image failed to load, using fallback: ${src}`);
+      };
+      
+      // Set source after event handlers
+      img.src = src;
+      
+      return galleryItem;
     }
 
-    // Add loading="lazy" to all images for better performance
-    document.addEventListener('DOMContentLoaded', () => {
-      const images = document.querySelectorAll('img');
-      images.forEach(img => {
-        if (!img.hasAttribute('loading')) {
-          img.setAttribute('loading', 'lazy');
-        }
-      });
-    });
+    // Initialize galleries
+    function initializeGalleries() {
+      for (const galleryId in galleryImages) {
+        const galleryElement = document.getElementById(galleryId);
+        if (!galleryElement) continue;
+        
+        galleryImages[galleryId].forEach((src, index) => {
+          const alt = galleryId.replace('-gallery', '').replace('-', ' ') + ' image ' + (index + 1);
+          const galleryItem = createGalleryImage(src, alt, galleryId, index);
+          galleryElement.appendChild(galleryItem);
+        });
+      }
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initializeGalleries);
+    
+    // Also initialize if DOM is already loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeGalleries);
+    } else {
+      initializeGalleries();
+    }
   </script>
 </body>
-  </html>
+</html>
